@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Artista</h1>
+
+<div id="artista">
+  <% @artista.each do |artistum| %>
+    <%= render artistum %>
+    <p>
+      <%= link_to "Show this artistum", artistum %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New artistum", new_artistum_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: artistum) do |form| %>
+  <% if artistum.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(artistum.errors.count, "error") %> prohibited this artistum from being saved:</h2>
+
+      <ul>
+        <% artistum.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome_artistico, style: "display: block" %>
+    <%= form.text_field :nome_artistico %>
+  </div>
+
+  <div>
+    <%= form.label :tipo, style: "display: block" %>
+    <%= form.text_field :tipo %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
