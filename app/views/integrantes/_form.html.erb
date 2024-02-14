@@ -1,0 +1,37 @@
+<%= form_with(model: integrante) do |form| %>
+  <% if integrante.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(integrante.errors.count, "error") %> prohibited this integrante from being saved:</h2>
+
+      <ul>
+        <% integrante.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :cpf, style: "display: block" %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div>
+    <%= form.label :funcao, style: "display: block" %>
+    <%= form.text_field :funcao %>
+  </div>
+
+  <div>
+    <%= form.label :artista_id, style: "display: block" %>
+    <%= form.text_field :artista_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

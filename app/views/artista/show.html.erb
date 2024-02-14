@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @artistum %>
+
+<div>
+  <%= link_to "Edit this artistum", edit_artistum_path(@artistum) %> |
+  <%= link_to "Back to artista", artista_path %>
+
+  <%= button_to "Destroy this artistum", @artistum, method: :delete %>
+</div>
