@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_14_154334) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_15_220548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "btree_gist"
@@ -35,6 +35,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_154334) do
   enable_extension "uuid-ossp"
   enable_extension "xml2"
 
+  create_table "album_funcionarios", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.bigint "funcionario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_funcionarios_on_album_id"
+    t.index ["funcionario_id"], name: "index_album_funcionarios_on_funcionario_id"
+  end
+
   create_table "albums", force: :cascade do |t|
     t.string "titulo"
     t.date "data_lancamento"
@@ -49,6 +58,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_154334) do
     t.string "tipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contrato_funcionarios", force: :cascade do |t|
+    t.bigint "contrato_id", null: false
+    t.bigint "funcionario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contrato_id"], name: "index_contrato_funcionarios_on_contrato_id"
+    t.index ["funcionario_id"], name: "index_contrato_funcionarios_on_funcionario_id"
   end
 
   create_table "contratos", force: :cascade do |t|
@@ -81,6 +99,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_154334) do
     t.index ["artista_id"], name: "index_integrantes_on_artista_id"
   end
 
+  create_table "musica_artista", force: :cascade do |t|
+    t.bigint "musica_id", null: false
+    t.bigint "artistum_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artistum_id"], name: "index_musica_artista_on_artistum_id"
+    t.index ["musica_id"], name: "index_musica_artista_on_musica_id"
+  end
+
+  create_table "musica_funcionarios", force: :cascade do |t|
+    t.bigint "musica_id", null: false
+    t.bigint "funcionario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["funcionario_id"], name: "index_musica_funcionarios_on_funcionario_id"
+    t.index ["musica_id"], name: "index_musica_funcionarios_on_musica_id"
+  end
+
   create_table "musicas", force: :cascade do |t|
     t.string "titulo"
     t.time "duracao"
@@ -92,8 +128,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_14_154334) do
     t.index ["album_id"], name: "index_musicas_on_album_id"
   end
 
+  add_foreign_key "album_funcionarios", "albums"
+  add_foreign_key "album_funcionarios", "funcionarios"
   add_foreign_key "albums", "artista", column: "artista_id"
+  add_foreign_key "contrato_funcionarios", "contratos"
+  add_foreign_key "contrato_funcionarios", "funcionarios"
   add_foreign_key "contratos", "artista", column: "artista_id"
   add_foreign_key "integrantes", "artista", column: "artista_id"
+  add_foreign_key "musica_artista", "artista"
+  add_foreign_key "musica_artista", "musicas"
+  add_foreign_key "musica_funcionarios", "funcionarios"
+  add_foreign_key "musica_funcionarios", "musicas"
   add_foreign_key "musicas", "albums"
 end
