@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  duracao: 2024-02-14 12:42:25
+  data_lancamento: 2024-02-14
+  genero: MyString
+  album: one
+
+two:
+  titulo: MyString
+  duracao: 2024-02-14 12:42:25
+  data_lancamento: 2024-02-14
+  genero: MyString
+  album: two
