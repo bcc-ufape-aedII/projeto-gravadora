@@ -1,5 +1,5 @@
 class Contrato < ApplicationRecord
-  belongs_to :artistum
+  belongs_to :artista, class_name: "Artistum", foreign_key: "artista_id"
   has_many :contrato_funcionarios
   has_many :funcionarios, through: :contrato_funcionarios
 
