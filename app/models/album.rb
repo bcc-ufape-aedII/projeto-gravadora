@@ -1,6 +1,9 @@
 class Album < ApplicationRecord
-  belongs_to :artista
+  belongs_to :artista, class_name: "Artistum", foreign_key: "artista_id"
   has_many :musicas, dependent: :destroy
+
+  has_many :album_funcionarios
+  has_many :funcionarios, through: :album_funcionarios
 
   validates :titulo, presence: true, uniqueness: { scope: :artista_id }
   validates :data_lancamento, presence: true

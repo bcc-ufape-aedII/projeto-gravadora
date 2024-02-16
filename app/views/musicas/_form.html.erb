@@ -33,7 +33,7 @@
 
   <div>
     <%= form.label :album_id, style: "display: block" %>
-    <%= form.text_field :album_id %>
+    <%= form.collection_select :album_id, Album.all, :id, :titulo, { prompt: 'Selecione um Album' }, class: 'form-control' %>
   </div>
 
   <div>

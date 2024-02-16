@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :artista_id, style: "display: block" %>
-    <%= form.text_field :artista_id %>
+    <%= form.collection_select :artista_id, Artistum.all, :id, :nome_artistico, { prompt: 'Selecione um Artista' }, class: 'form-control' %>
   </div>
 
   <div>
