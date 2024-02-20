@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :funcionarios
+  resources :funcionarios do
+    member do
+      get 'atuacao'
+    end
+  end
   resources :contratos
   resources :musicas
   resources :albums
