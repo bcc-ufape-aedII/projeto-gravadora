@@ -12,4 +12,6 @@ class Musica < ApplicationRecord
   validates :data_lancamento, presence: true
   validates :genero, presence: true
   validates :album, presence: true
+  validates :funcionario_ids, presence: true
+  validates :artistum_ids, presence: true
 end
