@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
-
+<h2>Informações do Artista:</h2>
 <%= render @artistum %>
+<h3>Integrantes</h3>
+<%= render @artistum.integrantes %>
+<h3>Albuns:</h3>
+<%= render @artistum.albums %>
 
 <div>
   <%= link_to "Edit this artistum", edit_artistum_path(@artistum) %> |

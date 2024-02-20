@@ -8,6 +8,20 @@ class ArtistaController < ApplicationController
 
   # GET /artista/1 or /artista/1.json
   def show
+    @integrantes = @artistum.integrantes
+    @albums = @artistum.albums
+  end
+
+  # Buscar artista pelo id
+  def buscar_por_id
+    artista_id = params[:artista_id]
+    redirect_to "/artista/#{artista_id.to_s}"
+  end
+
+  # Buscar albuns pelo artista
+  def buscar_albuns_pelo_artista
+    artista_id = params[:artista_id]
+    redirect_to "/artista/#{artista_id.to_s}/albums"
   end
 
   # GET /artista/new
