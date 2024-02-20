@@ -1,0 +1,25 @@
+<h1>Atuações de Funcionário</h1>
+<p style="color: green"><%= notice %></p>
+
+<h3>Detalhes do Funcionários</h3>
+<%= render @funcionario_atuacao %>
+<br>
+<h3>Atribuições:</h3>
+
+<div>
+  <h4>Total de Contratos: <%= @total_contratos %></h4>
+  <%= render @contratos %>
+</div>
+<hr>
+<div>
+  <h4>Total de Músicas: <%= @total_musicas %></h4>
+  <%= render @musicas %>
+</div>
+<hr>
+<div>
+  <h4>Total de Albuns: <%= @total_albuns %></h4>
+  <%= render @albuns %>
+</div>
+<div>
+  <%= link_to "Back to funcionarios", funcionarios_path %>
+</div>
