@@ -27,6 +27,7 @@ class ArtistaController < ApplicationController
   # GET /artista/new
   def new
     @artistum = Artistum.new
+    @integrante = @artistum.integrantes.build
   end
 
   # GET /artista/1/edit
@@ -39,6 +40,13 @@ class ArtistaController < ApplicationController
 
     respond_to do |format|
       if @artistum.save
+        if params[:integrantes].present?
+          # Itera sobre os parâmetros dos integrantes
+          params[:integrantes].each do |integrante_params|
+            # Cria um novo Integrante associado ao Artistum
+            @artistum.integrantes.create(integrante_params)
+          end
+        end
         format.html { redirect_to artistum_url(@artistum), notice: "Artistum was successfully created." }
         format.json { render :show, status: :created, location: @artistum }
       else
@@ -79,6 +87,6 @@ class ArtistaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def artistum_params
-      params.require(:artistum).permit(:nome_artistico, :tipo)
+      params.require(:artistum).permit(:nome_artistico, :tipo, integrantes_attributes: [:id, :nome, :cpf, :funcao, :_destroy])
     end
 end

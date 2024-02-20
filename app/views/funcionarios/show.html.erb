@@ -4,7 +4,8 @@
 
 <div>
   <%= link_to "Edit this funcionario", edit_funcionario_path(@funcionario) %> |
-  <%= link_to "Back to funcionarios", funcionarios_path %>
+  <%= link_to "Back to funcionarios", funcionarios_path %> |
+  <%= link_to "Atribuições do Funcionário", atuacao_funcionario_path %>
 
   <%= button_to "Destroy this funcionario", @funcionario, method: :delete %>
 </div>

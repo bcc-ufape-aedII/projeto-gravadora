@@ -6,6 +6,17 @@ class FuncionariosController < ApplicationController
     @funcionarios = Funcionario.all
   end
 
+  def atuacao
+    @funcionario_atuacao = Funcionario.find(params[:id])
+    @contratos = @funcionario_atuacao.contratos
+    @musicas = @funcionario_atuacao.musicas
+    @albuns = @funcionario_atuacao.albums
+
+    @total_contratos = @contratos.count
+    @total_musicas = @musicas.count
+    @total_albuns = @albuns.count
+  end
+
   # GET /funcionarios/1 or /funcionarios/1.json
   def show
   end
