@@ -1,0 +1,41 @@
+<div class="nested-fields">
+  <%= f.label :nome, style: "display: block" %>
+  <%= f.text_field :nome %>
+
+  <%= f.label :cpf, style: "display: block" %>
+  <%= f.text_field :cpf %>
+
+  <%= f.label :funcao, style: "display: block" %>
+  <%= f.text_field :funcao %>
+
+  <%= link_to_remove_fields "Remover", f %>
+</div>
+
+<script>
+    // Adiciona campos de integrante dinamicamente
+    function add_fields(link, association, content) {
+        var new_id = new Date().getTime();
+        var regexp = new RegExp("new_" + association, "g");
+        link.insertAdjacentHTML('beforebegin', content.replace(regexp, new_id));
+    }
+
+    // Remove campos de integrante
+    function remove_fields(link) {
+        link.previousElementSibling.querySelector("input[type=hidden]").value = "1";
+        link.closest(".nested-fields").style.display = "none";
+    }
+
+    document.addEventListener("click", function(event) {
+        if (event.target.classList.contains("add_fields")) {
+            var time = new Date().getTime();
+            var regexp = new RegExp(event.target.dataset.id, "g");
+            event.target.insertAdjacentHTML('beforebegin', event.target.dataset.fields.replace(regexp, time));
+            event.preventDefault();
+        }
+
+        if (event.target.classList.contains("remove_fields")) {
+            event.target.closest(".nested-fields").remove();
+            event.preventDefault();
+        }
+    });
+</script>

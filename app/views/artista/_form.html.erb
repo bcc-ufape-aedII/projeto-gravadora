@@ -21,6 +21,16 @@
     <%= form.text_field :tipo %>
   </div>
 
+  <div id="integrantes_fields">
+    <%= form.fields_for :integrantes do |integrante_form| %>
+      <%= render 'integrante_fields', f: integrante_form %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to_add_fields "Adicionar Integrante", form, :integrantes %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
