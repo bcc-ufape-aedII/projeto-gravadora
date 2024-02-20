@@ -8,4 +8,5 @@ class Contrato < ApplicationRecord
   validates :clausulas, presence: true
   validates :valor, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :artista, presence: true
+  validates :funcionario_ids, presence: true
 end

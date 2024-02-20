@@ -8,4 +8,5 @@ class Album < ApplicationRecord
   validates :titulo, presence: true, uniqueness: { scope: :artista_id }
   validates :data_lancamento, presence: true
   validates :artista, presence: true
+  validates :funcionario_ids, presence: true
 end

@@ -65,6 +65,6 @@ class ContratosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contrato_params
-      params.require(:contrato).permit(:data_inicio, :data_fim, :clausulas, :valor, :artista_id)
+      params.require(:contrato).permit(:data_inicio, :data_fim, :clausulas, :valor, :artista_id, funcionario_ids: [])
     end
 end

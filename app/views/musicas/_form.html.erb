@@ -37,6 +37,16 @@
   </div>
 
   <div>
+    <%= form.label :funcionario_id, style: "display: block" %>
+    <%= form.collection_check_boxes :funcionario_ids, Funcionario.all, :id, :nome, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :artista_id, style: "display: block" %>
+    <%= form.collection_check_boxes :artistum_ids, Artistum.all, :id, :nome_artistico, class: 'form-control' %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
