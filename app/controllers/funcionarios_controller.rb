@@ -26,7 +26,6 @@ class FuncionariosController < ApplicationController
     @contratos = @funcionario.contratos
   end
 
-
   # GET /funcionarios/new
   def new
     @funcionario = Funcionario.new

@@ -5,6 +5,9 @@
 <%= link_to "Albuns", albums_path %> |
 <%= link_to "Músicas", musicas_path %> |
 
+<h1>GRAVADORA - TOP 5 MAIORES CONTRATOS</h1>
+<%= link_to "Top 5 Maiores Contratos", top5_funcionarios_path, class: "btn btn-primary" %>
+
 <h1>GRAVADORA - BUSCAS</h1>
 
 <h3>Buscar artista por ID</h3>
@@ -21,4 +24,11 @@
 <%= form_with url: buscar_albuns_pelo_artista_artista_path, method: :get do |form| %>
   <%= form.collection_select :artista_id, Artistum.all, :id, :nome_com_id, { prompt: 'Selecione um Artista' }, class: 'form-control' %>
   <%= form.submit "Buscar Albuns" %>
+<% end %>
+
+<h3>Buscar Contratos por Funcionário</h3>
+<p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM contratos WHERE funcionario_id = funcionario_id;</i></p>
+<%= form_with url: contratos_por_funcionario_funcionarios_path, method: :get do |form| %>
+  <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome, { prompt: 'Selecione um Funcionário' }, class: 'form-control' %>
+  <%= form.submit "Buscar Contratos", class: "btn btn-primary" %>
 <% end %>
