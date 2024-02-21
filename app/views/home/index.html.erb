@@ -10,17 +10,15 @@
 <h3>Buscar artista por ID</h3>
 <p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM artista WHERE id = artista_id;</i></p>
 
-<%= form_tag buscar_por_id_artista_path, method: :get do %>
-  <%= label_tag :artista_id, "ID do Artista:" %>
-  <%= text_field_tag :artista_id, nil, id: "artista_id_input" %>
-  <%= submit_tag "Buscar Artista", id: "buscar_artista_btn" %>
+<%= form_with url: buscar_por_id_artista_path, method: :get do |form| %>
+  <%= form.collection_select :artista_id, Artistum.all, :id, :nome_com_id, { prompt: 'Selecione um Artista' }, class: 'form-control' %>
+  <%= form.submit "Buscar Artista" %>
 <% end %>
 
 <h3>Buscar Albuns pelo ID do artista</h3>
 <p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM albums WHERE artista_id = artista_id;</i></p>
 
-<%= form_tag buscar_albuns_pelo_artista_artista_path, method: :get do %>
-  <%= label_tag :artista_id, "ID do Artista:" %>
-  <%= text_field_tag :artista_id, nil, id: "artista_id_input" %>
-  <%= submit_tag "Buscar Albuns", id: "buscar_artista_btn" %>
+<%= form_with url: buscar_albuns_pelo_artista_artista_path, method: :get do |form| %>
+  <%= form.collection_select :artista_id, Artistum.all, :id, :nome_com_id, { prompt: 'Selecione um Artista' }, class: 'form-control' %>
+  <%= form.submit "Buscar Albuns" %>
 <% end %>
