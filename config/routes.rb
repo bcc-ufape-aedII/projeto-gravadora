@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :funcionarios do
     member do
       get 'atuacao'
+      get 'contratos_por_funcionario'
     end
   end
   resources :contratos
