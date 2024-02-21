@@ -36,7 +36,8 @@
 <% end %>
 
 <h3>Buscar Contratos por Funcionário</h3>
-<p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM contratos WHERE funcionario_id = funcionario_id;</i></p>
+<p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT c.* FROM funcionarios as f JOIN contrato_funcionarios as cf ON f.id = cf.funcionario_id
+  JOIN contratos as c ON cf.contrato_id = c.id WHERE cf.id = 1;</i></p>
 <%= form_with url: contratos_por_funcionario_funcionarios_path, method: :get do |form| %>
   <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome, { prompt: 'Selecione um Funcionário' }, class: 'form-control' %>
   <%= form.submit "Buscar Contratos", class: "btn btn-primary" %>
@@ -45,3 +46,26 @@
 <h3>Buscar Top 5 Maiores Contratos</h3>
 <p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM contratos ORDER BY valor DESC LIMIT 5;</i></p>
 <%= link_to "Top 5 Maiores Contratos", top5_funcionarios_path, class: "btn btn-primary" %>
+
+<h3>Buscar Atribuições do Funcionário pelo ID</h3>
+<p><b>Lógica da busca no PostgreSQL:</b></p>
+<p><b>Lógica da busca que conta as atribuições: </b><i>SELECT COUNT(DISTINCT c.id) AS total_contratos, COUNT(DISTINCT m.id) AS total_musicas, COUNT(DISTINCT a.id) AS total_albuns
+  FROM funcionarios AS f
+  LEFT JOIN contrato_funcionarios AS cf ON f.id = cf.funcionario_id
+  LEFT JOIN contratos AS c ON cf.contrato_id = c.id
+  LEFT JOIN musica_funcionarios AS mf ON f.id = mf.funcionario_id
+  LEFT JOIN musicas AS m ON mf.musica_id = m.id
+  LEFT JOIN album_funcionarios AS af ON f.id = af.funcionario_id
+  LEFT JOIN albums AS a ON af.album_id = a.id
+  WHERE f.id = 1;</i></p>
+<p><b>Lógica da busca os Contratos nos quais o Funcionário está atribuido: </b><i>SELECT * FROM funcionarios AS f LEFT JOIN contrato_funcionarios AS cf ON f.id = cf.funcionario_id
+  LEFT JOIN contratos AS c ON cf.contrato_id = c.id WHERE f.id = 1;</i></p>
+<p><b>Lógica da busca os Música nos quais o Funcionário está atribuido: </b><i>SELECT * FROM funcionarios AS f LEFT JOIN musica_funcionarios AS mf ON f.id = mf.funcionario_id
+  LEFT JOIN musicas AS m ON mf.musica_id = m.id WHERE f.id = 1;</i></p>
+<p><b>Lógica da busca os Albuns nos quais o Funcionário está atribuido: </b><i>SELECT * FROM funcionarios AS f LEFT JOIN album_funcionarios AS af ON f.id = af.funcionario_id
+  LEFT JOIN albums AS a ON af.album_id = a.id WHERE f.id = 1;</i></p>
+
+<%= form_with url: atuacao_funcionarios_path, method: :get do |form| %>
+  <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome, { prompt: 'Selecione um Funcionario' }, class: 'form-control' %>
+  <%= form.submit "Buscar Atribuições" %>
+<% end %>

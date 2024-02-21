@@ -7,7 +7,8 @@ class FuncionariosController < ApplicationController
   end
 
   def atuacao
-    @funcionario_atuacao = Funcionario.find(params[:id])
+    id = if params[:id].present? then params[:id] else params[:funcionario_id] end
+    @funcionario_atuacao = Funcionario.find(id)
     @contratos = @funcionario_atuacao.contratos
     @musicas = @funcionario_atuacao.musicas
     @albuns = @funcionario_atuacao.albums
