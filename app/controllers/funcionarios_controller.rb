@@ -1,5 +1,5 @@
 class FuncionariosController < ApplicationController
-  before_action :set_funcionario, only: %i[ show edit update destroy contratos_por_funcionario ]
+  before_action :set_funcionario, only: %i[ show edit update destroy ]
 
   # GET /funcionarios or /funcionarios.json
   def index
@@ -22,7 +22,7 @@ class FuncionariosController < ApplicationController
   end
 
   def contratos_por_funcionario
-    @funcionario = Funcionario.find(params[:id])
+    @funcionario = Funcionario.find(params[:funcionario_id])
     @contratos = @funcionario.contratos
   end
 
