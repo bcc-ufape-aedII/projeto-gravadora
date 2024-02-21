@@ -19,6 +19,10 @@ class ContratosController < ApplicationController
   def edit
   end
 
+  def top5
+    @top_contratos = Contrato.order(valor: :desc).limit(5)
+  end
+
   # POST /contratos or /contratos.json
   def create
     @contrato = Contrato.new(contrato_params)

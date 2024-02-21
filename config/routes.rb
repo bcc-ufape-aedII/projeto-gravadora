@@ -5,7 +5,11 @@ Rails.application.routes.draw do
       get 'contratos_por_funcionario'
     end
   end
-  resources :contratos
+  resources :contratos do
+    collection do
+      get 'top5'
+    end
+  end
   resources :musicas
   resources :albums
   resources :integrantes
