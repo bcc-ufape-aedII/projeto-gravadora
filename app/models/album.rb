@@ -9,4 +9,8 @@ class Album < ApplicationRecord
   validates :data_lancamento, presence: true
   validates :artista, presence: true
   validates :funcionario_ids, presence: true
+
+  def nome_com_id
+    "#{titulo} - #{id}"
+  end
 end

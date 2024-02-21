@@ -10,6 +10,12 @@ class AlbumsController < ApplicationController
   def show
   end
 
+  # Buscar album pelo id
+  def buscar_por_id
+    album_id = params[:album_id]
+    redirect_to album_path(album_id)
+  end
+
   # GET /albums/new
   def new
     @album = Album.new

@@ -9,9 +9,19 @@ Rails.application.routes.draw do
       get 'top5', to: 'contratos#top5'
     end
   end
-  resources :contratos
+  resources :contratos do
+    collection do
+      get 'buscar_por_id', to: 'contratos#buscar_por_id'
+    end
+  end
   resources :musicas
-  resources :albums
+
+  resources :albums do
+    collection do
+      get 'buscar_por_id', to: 'albums#buscar_por_id'
+    end
+  end
+
   resources :integrantes
   resources :artista do
     resources :albums

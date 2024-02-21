@@ -26,6 +26,22 @@
   <%= form.submit "Buscar Albuns" %>
 <% end %>
 
+<h3>Buscar Contrato por ID</h3>
+<p><b>Lógica de busca no PostgreSql:</b> <i> Select * FROM  contrato_id = contrato_id;</i></p>
+
+<%= form_with url: buscar_por_id_contratos_path, method: :get do |form| %>
+  <%= form.collection_select :contrato_id, Contrato.all, :id, :nome_com_id, { prompt: 'Selecione um Contrato' }, class: 'form-control' %>
+  <%= form.submit "Buscar Contrato" %>
+<% end %>
+
+<h3>Buscar Álbuns por ID</h3>
+<p><b>Lógica de busca no PostgreSql:</b> <i> Select * FROM  album_id = album_id;</i></p>
+
+<%= form_with url: buscar_por_id_albums_path, method: :get do |form| %>
+  <%= form.collection_select :album_id, Album.all, :id, :nome_com_id, { prompt: 'Selecione um Álbum' }, class: 'form-control' %>
+  <%= form.submit "Buscar Álbum" %>
+<% end %>
+
 <h3>Buscar Contratos por Funcionário</h3>
 <p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM contratos WHERE funcionario_id = funcionario_id;</i></p>
 <%= form_with url: contratos_por_funcionario_funcionarios_path, method: :get do |form| %>
