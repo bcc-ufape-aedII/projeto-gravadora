@@ -6,6 +6,12 @@ class ContratosController < ApplicationController
     @contratos = Contrato.all
   end
 
+  # GET /contratos/buscar_por_id/:id
+  def buscar_por_id
+    contrato_id = params[:contrato_id]
+    redirect_to contrato_path(contrato_id)
+  end
+
   # GET /contratos/1 or /contratos/1.json
   def show
   end
