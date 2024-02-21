@@ -21,6 +21,11 @@ class FuncionariosController < ApplicationController
   def show
   end
 
+  def contratos_por_funcionario
+    @funcionario = Funcionario.find(params[:funcionario_id])
+    @contratos = @funcionario.contratos
+  end
+
   # GET /funcionarios/new
   def new
     @funcionario = Funcionario.new

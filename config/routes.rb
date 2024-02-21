@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :funcionarios do
+    resources :contratos
     member do
       get 'atuacao'
+    end
+    collection do
+      get 'contratos_por_funcionario', to: 'funcionarios#contratos_por_funcionario'
+      get 'top5', to: 'contratos#top5'
     end
   end
   resources :contratos
