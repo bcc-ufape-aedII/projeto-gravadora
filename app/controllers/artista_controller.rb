@@ -20,8 +20,9 @@ class ArtistaController < ApplicationController
 
   # Buscar albuns pelo artista
   def buscar_albuns_pelo_artista
-    artista_id = params[:artista_id]
-    redirect_to "/artista/#{artista_id.to_s}/albums"
+    @artista = Artistum.find(params[:artista_id])
+    @albums = @artista.albums
+    render 'albums/index'
   end
 
   # GET /artista/new
