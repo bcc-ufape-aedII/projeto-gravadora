@@ -7,4 +7,8 @@ class Artistum < ApplicationRecord
   accepts_nested_attributes_for :integrantes
   validates :nome_artistico, presence: true
   validates :tipo, presence: true
+  # Função que combina id comm nome artistico
+  def nome_com_id
+    "#{nome_artistico} [ID: #{id}]"
+  end
 end
