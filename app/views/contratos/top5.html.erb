@@ -1,0 +1,11 @@
+<h1>Top 5 Maiores Contratos</h1>
+
+<% if @top_contratos.any? %>
+  <ol>
+    <% @top_contratos.each do |contrato| %>
+      <li><%= contrato.artista.nome_artistico %> - <%= number_to_currency(contrato.valor) %></li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>Nenhum contrato encontrado.</p>
+<% end %>

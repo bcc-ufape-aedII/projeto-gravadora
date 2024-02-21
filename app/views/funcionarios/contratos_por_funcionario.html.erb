@@ -1,0 +1,16 @@
+<h1>Contratos do Funcionário <%= @funcionario.nome %></h1>
+
+<% if @contratos.any? %>
+  <% @contratos.each do |contrato| %>
+    <div class="contract-details">
+      <p><strong>Artista:</strong> <%= contrato.artista.nome_artistico %></p>
+      <p><strong>Data de Início:</strong> <%= contrato.data_inicio %></p>
+      <p><strong>Data de Fim:</strong> <%= contrato.data_fim %></p>
+      <p><strong>Valor:</strong> <%= contrato.valor %></p>
+      <p><strong>Clausulas:</strong> <%= contrato.clausulas %></p>
+    </div>
+    <hr>
+  <% end %>
+<% else %>
+  <p>Nenhum contrato encontrado para este funcionário.</p>
+<% end %>
