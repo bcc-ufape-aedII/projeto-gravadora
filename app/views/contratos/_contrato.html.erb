@@ -1,16 +1,16 @@
 <div id="<%= dom_id contrato %>">
   <p>
-    <strong>Data inicio:</strong>
-    <%= contrato.data_inicio %>
+    <strong>Data de início:</strong>
+    <%= contrato.data_inicio.strftime('%d/%m/%Y') %>
   </p>
 
   <p>
-    <strong>Data fim:</strong>
-    <%= contrato.data_fim %>
+    <strong>Data de finalização:</strong>
+    <%= contrato.data_fim.strftime('%d/%m/%Y') %>
   </p>
 
   <p>
-    <strong>Clausulas:</strong>
+    <strong>Cláusulas:</strong>
     <%= contrato.clausulas %>
   </p>
 

@@ -1,8 +1,8 @@
 <h1>GRAVADORA - CADASTROS</h1> |
-<%= link_to "Funcionarios", funcionarios_path %> |
+<%= link_to "Funcionários", funcionarios_path %> |
 <%= link_to "Contratos", contratos_path %> |
 <%= link_to "Artistas", artista_path %> |
-<%= link_to "Albuns", albums_path %> |
+<%= link_to "Álbuns", albums_path %> |
 <%= link_to "Músicas", musicas_path %> |
 
 <h1>GRAVADORA - BUSCAS</h1>
@@ -18,7 +18,7 @@
 <p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT * FROM albums WHERE artista_id = artista_id;</i></p>
 <%= form_with url: buscar_albuns_pelo_artista_artista_path, method: :get do |form| %>
   <%= form.collection_select :artista_id, Artistum.all, :id, :nome_com_id, { prompt: 'Selecione um Artista' }, class: 'form-control' %>
-  <%= form.submit "Buscar Albuns" %>
+  <%= form.submit "Buscar Álbuns" %>
 <% end %>
 
 <h3>Buscar Contrato por ID</h3>
