@@ -1,7 +1,7 @@
 class Contrato < ApplicationRecord
   belongs_to :artista, class_name: "Artistum", foreign_key: "artista_id"
   has_many :contrato_funcionarios
-  has_many :funcionarios, through: :contrato_funcionarios
+  has_many :funcionarios, through: :contrato_funcionarios, dependent: :destroy
 
   validates :data_inicio, presence: true
   validates :data_fim, presence: true
@@ -9,8 +9,4 @@ class Contrato < ApplicationRecord
   validates :valor, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :artista, presence: true
   validates :funcionario_ids, presence: true
-
-  def nome_com_id
-    "#{id}"
-  end
 end

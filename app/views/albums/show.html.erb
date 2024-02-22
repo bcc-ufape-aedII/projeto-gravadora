@@ -1,6 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
+<h2>Infos do Álbum:</h2>
 <%= render @album %>
+<h2>Músicas do Álbum:</h2>
+<div>
+  <% @album.musicas.each do |musica| %>
+    <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; display: inline-block;">
+      <%= render musica %>
+    </div>
+  <% end %>
+</div>
+
 
 <div>
   <%= link_to "Edit this album", edit_album_path(@album) %> |

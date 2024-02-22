@@ -3,7 +3,7 @@ class Album < ApplicationRecord
   has_many :musicas, dependent: :destroy
 
   has_many :album_funcionarios
-  has_many :funcionarios, through: :album_funcionarios
+  has_many :funcionarios, through: :album_funcionarios, dependent: :destroy
 
   validates :titulo, presence: true, uniqueness: { scope: :artista_id }
   validates :data_lancamento, presence: true
@@ -11,6 +11,6 @@ class Album < ApplicationRecord
   validates :funcionario_ids, presence: true
 
   def nome_com_id
-    "#{titulo} - #{id}"
+    "#{titulo} [ID #{id}]"
   end
 end

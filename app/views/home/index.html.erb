@@ -24,7 +24,7 @@
 <h3>Buscar Contrato por ID</h3>
 <p><b>Lógica de busca no PostgreSql:</b> <i> Select * FROM contratos WHERE contrato_id = contrato_id;</i></p>
 <%= form_with url: buscar_por_id_contratos_path, method: :get do |form| %>
-  <%= form.collection_select :contrato_id, Contrato.all, :id, :nome_com_id, { prompt: 'Selecione um Contrato' }, class: 'form-control' %>
+  <%= form.collection_select :contrato_id, Contrato.all, :id, :id, { prompt: 'Selecione um Contrato' }, class: 'form-control' %>
   <%= form.submit "Buscar Contrato" %>
 <% end %>
 
@@ -39,7 +39,7 @@
 <p><b>Lógica da busca no PostgreSQL:</b> <i>SELECT c.* FROM funcionarios as f JOIN contrato_funcionarios as cf ON f.id = cf.funcionario_id
   JOIN contratos as c ON cf.contrato_id = c.id WHERE cf.id = 1;</i></p>
 <%= form_with url: contratos_por_funcionario_funcionarios_path, method: :get do |form| %>
-  <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome, { prompt: 'Selecione um Funcionário' }, class: 'form-control' %>
+  <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome_com_id, { prompt: 'Selecione um Funcionário' }, class: 'form-control' %>
   <%= form.submit "Buscar Contratos", class: "btn btn-primary" %>
 <% end %>
 
@@ -66,6 +66,6 @@
   LEFT JOIN albums AS a ON af.album_id = a.id WHERE f.id = 1;</i></p>
 
 <%= form_with url: atuacao_funcionarios_path, method: :get do |form| %>
-  <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome, { prompt: 'Selecione um Funcionario' }, class: 'form-control' %>
+  <%= form.collection_select :funcionario_id, Funcionario.all, :id, :nome_com_id, { prompt: 'Selecione um Funcionario' }, class: 'form-control' %>
   <%= form.submit "Buscar Atribuições" %>
 <% end %>
