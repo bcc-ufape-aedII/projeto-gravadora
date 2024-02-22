@@ -1,12 +1,12 @@
 <div id="<%= dom_id album %>">
   <p>
-    <strong>Titulo:</strong>
+    <strong>Título:</strong>
     <%= album.titulo %>
   </p>
 
   <p>
-    <strong>Data lancamento:</strong>
-    <%= album.data_lancamento %>
+    <strong>Data de lançamento:</strong>
+    <%= album.data_lancamento.strftime('%d/%m/%Y') %>
   </p>
 
   <p>

@@ -1,26 +1,26 @@
 <div id="<%= dom_id musica %>">
   <p>
-    <strong>Titulo:</strong>
+    <strong>Título:</strong>
     <%= musica.titulo %>
   </p>
 
   <p>
-    <strong>Duracao:</strong>
-    <%= musica.duracao %>
+    <strong>Duração:</strong>
+    <%= musica.duracao.strftime('%H:%M') %>
   </p>
 
   <p>
-    <strong>Data lancamento:</strong>
-    <%= musica.data_lancamento %>
+    <strong>Data de lançamento:</strong>
+    <%= musica.data_lancamento.strftime('%d/%m/%Y') %>
   </p>
 
   <p>
-    <strong>Genero:</strong>
+    <strong>Gênero:</strong>
     <%= musica.genero %>
   </p>
 
   <p>
-    <strong>Album:</strong>
+    <strong>Álbum:</strong>
     <%= musica.album_id %>
   </p>
 
